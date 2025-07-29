@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# Expo + Maestro E2E Example
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project demonstrates how to use [Maestro](https://maestro.mobile.dev/) for end-to-end (E2E) testing in an [Expo](https://expo.dev) React Native app.
 
-## Get started
+## Getting Started
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Install Dependencies
 
 ```bash
-npm run reset-project
+yarn install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Start the Expo App
 
-## Learn more
+```bash
+yarn expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Follow the Expo CLI instructions to run the app on an emulator, simulator, or device.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 3. Install Maestro CLI
 
-## Join the community
+If you haven’t already, install Maestro globally:
 
-Join our community of developers creating universal apps.
+```bash
+curl -Ls "https://get.maestro.mobile.dev" | bash
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Or with Homebrew:
+
+```bash
+brew install mobile-dev-inc/tap/maestro
+```
+
+### 4. Run Maestro E2E Tests
+
+1. Make sure your Expo app is running on an emulator or simulator.
+2. In a new terminal, run your Maestro flows:
+
+```bash
+maestro test <path-to-your-flow-file.yaml>
+```
+
+Replace `<path-to-your-flow-file.yaml>` with the path to your Maestro test flow.
+
+## Project Structure
+
+- `app/` – Main Expo app code (file-based routing).
+- `eas.json` – EAS build configuration, including an `e2e-test` profile for E2E builds.
+- `scripts/` – Project scripts (e.g., `reset-project.js`).
+- `android/` – Native Android project (for advanced configuration).
+
+## E2E Build Profile
+
+The `eas.json` includes an `e2e-test` build profile for running E2E tests with Maestro. Example usage:
+
+```bash
+eas build --profile e2e-test --platform android
+```
+
+This will build an APK suitable for E2E testing.
+
+## Learn More
+
+- [Maestro Documentation](https://maestro.mobile.dev/)
+- [Expo Documentation](https://docs.expo.dev/)
+
+## Community
+
+- [Expo on GitHub](https://github.com/expo/expo)
+- [Maestro on GitHub](https://github.com/mobile-dev-inc/maestro)
+- [Expo Discord](https://chat.expo.dev)
